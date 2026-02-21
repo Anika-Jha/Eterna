@@ -78,6 +78,17 @@ export const api = {
           200: z.custom<typeof comments.$inferSelect>(),
           404: errorSchemas.notFound,
         },
+      },
+      react: {
+        method: 'POST' as const,
+        path: '/api/comments/:id/react' as const,
+        input: z.object({
+          emoji: z.string(),
+        }),
+        responses: {
+          200: z.custom<typeof comments.$inferSelect>(),
+          404: errorSchemas.notFound,
+        },
       }
     }
   },

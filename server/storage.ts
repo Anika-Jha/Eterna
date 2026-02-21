@@ -28,6 +28,10 @@ export class DatabaseStorage implements IStorage {
 
   async createArtifact(insertArtifact: InsertArtifact): Promise<typeof artifacts.$inferSelect> {
     const extinctionRisk = Math.floor(Math.random() * 80) + 20; // 20-100% risk initially
+    const rarities = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
+    const rarity = rarities[Math.floor(Math.random() * rarities.length)];
+    const tokenId = `ETR-${Math.floor(Math.random() * 1000000).toString(16).toUpperCase()}`;
+
     const [artifact] = await db
       .insert(artifacts)
       .values({ 
@@ -35,6 +39,8 @@ export class DatabaseStorage implements IStorage {
         extinctionRisk,
         fadeLevel: 0, 
         supportCount: 0,
+        rarity,
+        tokenId,
       })
       .returning();
     return artifact;
@@ -54,7 +60,10 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createComment(insertComment: InsertComment): Promise<typeof comments.$inferSelect> {
-    const [comment] = await db.insert(comments).values(insertComment).returning();
+    const [comment] = await db.insert(comments).values({
+      ...insertComment,
+      reactions: { "👍": 0, "❤️": 0, "😮": 0, "😢": 0, "🎉": 0 }
+    }).returning();
     return comment;
   }
 
@@ -62,6 +71,23 @@ export class DatabaseStorage implements IStorage {
      const [updated] = await db
       .update(comments)
       .set(updates)
+      .where(eq(comments.id, id))
+      .returning();
+    return updated;
+  }
+
+  async reactToComment(id: number, emoji: string): Promise<typeof comments.$inferSelect | undefined> {
+    const [comment] = await db.select().from(comments).where(eq(comments.id, id));
+    if (!comment) return undefined;
+
+    const reactions = comment.reactions as Record<string, number>;
+    if (reactions[emoji] !== undefined) {
+      reactions[emoji] += 1;
+    }
+
+    const [updated] = await db
+      .update(comments)
+      .set({ reactions })
       .where(eq(comments.id, id))
       .returning();
     return updated;

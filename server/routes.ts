@@ -167,6 +167,19 @@ export async function registerRoutes(
     res.json(comment);
   });
 
+  app.post("/api/comments/:id/react", async (req, res) => {
+    try {
+      const { emoji } = z.object({ emoji: z.string() }).parse(req.body);
+      const comment = await (storage as any).reactToComment(Number(req.params.id), emoji);
+      if (!comment) {
+        return res.status(404).json({ message: 'Comment not found' });
+      }
+      res.json(comment);
+    } catch (err) {
+      res.status(400).json({ message: "Invalid reaction" });
+    }
+  });
+
   // Dashboard Stats
   app.get(api.dashboard.stats.path, async (req, res) => {
     const artifactsList = await storage.getArtifacts();

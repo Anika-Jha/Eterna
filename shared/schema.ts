@@ -16,6 +16,8 @@ export const artifacts = pgTable("artifacts", {
   supportCount: integer("support_count").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
   lastSupportedAt: timestamp("last_supported_at").defaultNow(),
+  tokenId: text("token_id"),
+  rarity: text("rarity"),
 });
 
 export const comments = pgTable("comments", {
@@ -24,6 +26,7 @@ export const comments = pgTable("comments", {
   content: text("content").notNull(),
   supportCount: integer("support_count").default(0).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
+  reactions: jsonb("reactions").default({ "👍": 0, "❤️": 0, "😮": 0, "😢": 0, "🎉": 0 }).notNull(),
 });
 
 export const insertArtifactSchema = createInsertSchema(artifacts).omit({
