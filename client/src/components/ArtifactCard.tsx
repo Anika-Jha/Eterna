@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { Heart, Shield, MessageCircle, AlertTriangle } from "lucide-react";
+import { Heart, Shield, MessageCircle, AlertTriangle, BadgeCheck } from "lucide-react";
 import { type Artifact } from "@shared/schema";
 import { useSupportArtifact } from "@/hooks/use-artifacts";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
 
 interface ArtifactCardProps {
   artifact: Artifact;
@@ -24,6 +25,16 @@ export function ArtifactCard({ artifact }: ArtifactCardProps) {
     support({ id: artifact.id, action });
   };
 
+  const getRarityColor = (rarity?: string | null) => {
+    switch (rarity?.toLowerCase()) {
+      case 'legendary': return 'bg-orange-500 text-white border-orange-600';
+      case 'epic': return 'bg-purple-500 text-white border-purple-600';
+      case 'rare': return 'bg-blue-500 text-white border-blue-600';
+      case 'uncommon': return 'bg-green-500 text-white border-green-600';
+      default: return 'bg-slate-500 text-white border-slate-600';
+    }
+  };
+
   return (
     <div className="relative group cursor-pointer h-full block" onClick={() => window.location.href = `/artifact/${artifact.id}`}>
       <motion.div
@@ -33,6 +44,19 @@ export function ArtifactCard({ artifact }: ArtifactCardProps) {
         whileHover={{ y: -5 }}
         transition={{ duration: 0.4 }}
       >
+        {/* Badges Overlay */}
+        <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
+          <Badge className="bg-primary/90 text-primary-foreground flex items-center gap-1 shadow-sm">
+            <BadgeCheck className="h-3 w-3" />
+            Minted
+          </Badge>
+          {artifact.rarity && (
+            <Badge className={cn("shadow-sm border", getRarityColor(artifact.rarity))}>
+              {artifact.rarity}
+            </Badge>
+          )}
+        </div>
+
         {/* Extinction Risk Indicator */}
         {isAtRisk && (
           <div className="absolute top-3 right-3 z-20 flex items-center gap-1 rounded-full bg-destructive/90 px-2 py-1 text-xs font-bold text-destructive-foreground shadow-sm">
@@ -59,7 +83,7 @@ export function ArtifactCard({ artifact }: ArtifactCardProps) {
           {/* Title & Type on Image */}
           <div className="absolute bottom-0 left-0 p-4 w-full text-white">
             <p className="text-xs font-medium uppercase tracking-wider text-white/80 mb-1">
-              {artifact.type}
+              {artifact.type} • {artifact.tokenId}
             </p>
             <h3 className="font-serif text-xl font-bold leading-tight line-clamp-2">
               {artifact.title}
