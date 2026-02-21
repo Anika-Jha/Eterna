@@ -58,3 +58,34 @@ Preferred communication style: Simple, everyday language.
 - **Google Fonts**: Playfair Display (serif headers), Inter (body text), DM Sans, Fira Code, Geist Mono loaded via CDN
 - **Unsplash**: Seed data references Unsplash image URLs for sample artifacts
 - **npm packages of note**: `express` v5, `drizzle-orm`, `openai`, `framer-motion`, `recharts`, `wouter`, `react-hook-form`, `zod`, `date-fns`, `connect-pg-simple` (session store)
+
+## Future Scope
+
+Eterna is just the beginning. In the future, we aim to expand the platform to:
+
+- **Full Web3 Integration** – mint real NFTs on testnets/mainnet (Polygon, Ethereum).  
+- **Advanced AI Narratives** – richer extinction stories, history, and poetic context for artifacts.  
+- **Global Community Support** – user profiles, leaderboards, and collaborative preservation challenges.  
+- **Mobile App Experience** – optimized for iOS/Android with push notifications.  
+- **Multimedia Artifacts** – support audio, video, and interactive artifacts in addition to images.  
+- **Persistent Storage** – IPFS or decentralized storage for long-term artifact preservation.  
+- **Gamification & Rewards** – achievements, badges, and incentive tokens for supporting artifacts.
+
+---
+
+## Upcoming Features
+
+- **Interactive Filters** – sort by most endangered, most supported, or recently added.  
+- **Shareable Links** – each artifact will have a unique URL for sharing on social media.  
+- **Comment Reactions** – emoji reactions and upvotes for community discussions.  
+- **Dashboard Enhancements** – interactive charts, heatmaps, and real-time notifications.  
+- **Fade Alerts** – pop-ups when an artifact reaches critical fade (>80%).  
+- **Polished Animations** – glow effects, hover transitions, and museum-style visual polish.  
+- **Light Web3 Flavor** – simulated staking, minting, and token-based preservation.
+
+---
+
+## Deployed Project
+
+Check out the live version of **Eterna** here:  
+[🔗 Visit Eterna](https://eterna--jhaanika03.replit.app)
