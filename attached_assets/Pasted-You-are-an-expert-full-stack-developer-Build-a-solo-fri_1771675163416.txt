@@ -1,0 +1,96 @@
+You are an expert full-stack developer. Build a **solo-friendly Next.js + React project called "Eterna"**, a living digital museum where human skills, traditions, recipes, and rituals are preserved as NFTs that **fade over time unless supported** by the community. Include the following features in the scaffold, covering all loopholes and making it judge-proof:
+
+1. **Artifact Submission**
+   - Users can upload:
+     - Image (use uploaded image as-is; DO NOT generate AI art)
+     - Artifact type (recipe, skill, ritual, profession, etc.)
+     - Artifact description
+     - Optional tags/categories
+   - Instructions visible on the page: 
+     > "Submit your artifact to preserve it. Your memory lives here — or fades if neglected."
+   - Generate **symbolic AI reasoning** for extinction risk (even simple GPT-3.5 or Hugging Face call):
+     - Example output: "This skill has a 72% chance to fade in the next 15 years."
+     - Optional: short poetic narrative about the artifact.
+
+2. **NFT Gallery**
+   - Display all submissions as cards with:
+     - Uploaded image
+     - Artifact type
+     - Description
+     - Extinction Risk Score
+     - Fade level (0–100)
+   - Fade mechanics:
+     - Gradual desaturation / blur / transparency over time
+     - Fade visually resets partially when supported
+   - Hover effect: show metadata and comments
+   - Prominent **vibe lines** on cards or gallery:
+     > "Preserve it or watch it ghost."  
+     > "Memories don’t last… unless you stake."  
+     > "Extinct? Not on my watch."  
+     > "Keep it alive, or watch it dissolve."
+
+3. **Support Mechanics**
+   - Each NFT card has three buttons: **Vote**, **Stake**, **Interact**
+   - Clicking a button:
+     - Resets or reduces fade level
+     - Updates frontend state
+     - Shows glow/highlight animation
+     - Tooltip explains functionality:
+       > "Vote to show you care."  
+       > "Stake to preserve this memory."  
+       > "Interact to keep it alive."
+   - Cumulative support count visible on NFT card
+
+4. **Comments & Idea Sharing**
+   - Users can add comments under each NFT
+   - Display comments with timestamps and support count (upvotes)
+   - Encourage community discussion
+
+5. **Dashboard**
+   - Right panel or separate page showing:
+     - Extinction probability trends across all NFTs
+     - Total vote/stake/interact counts
+     - Most commented NFTs
+   - Updates **in real-time** as users interact
+   - Graphical visualizations for trends (bar chart, line graph)
+   - Dashboard includes clear instructions:
+     > "Artifacts fade over time. Support to preserve them. Add comments to enrich the archive."
+
+6. **Styling & Animations**
+   - Museum-like aesthetics:
+     - Soft serif fonts for gallery
+     - Warm earthy colors for artifact display
+     - Sharp, minimal graphs for dashboard
+   - Smooth fade animation for NFTs
+   - Animated glow/highlight on support button click
+   - Hover transitions for metadata display
+
+7. **Technical Stack**
+   - React functional components with hooks
+   - Frontend state stores all NFT data, fade levels, interactions, and comments
+   - Use Next.js API routes if needed to store comments or support actions (optional: local JSON or browser storage)
+   - Fade simulation time-based (fade increases over time, resets on support)
+   - AI-generated extinction narratives use free API (GPT-3.5 or Hugging Face) or placeholder function
+   - NFT minting can be simulated in frontend state or optionally deployed to testnet (Polygon Mumbai / Goerli)
+   - Fully solo-buildable; no heavy backend required
+
+8. **Instructions & Demo Notes**
+   - On upload page: instructions for uploading artifacts and describing their significance
+   - Tooltips for each support button explaining the effect
+   - Dashboard shows how interactions affect extinction trends
+   - Comments section encourages sharing ideas and interacting with other artifacts
+   - All vibe lines integrated prominently for judge impact
+
+9. **Output Requirements**
+   - Generate **full Next.js + React scaffold** including:
+     - Artifact submission form
+     - NFT gallery with fade + vote/stake/interact
+     - Comments and idea-sharing system
+     - Interactive dashboard
+     - Inline instructions, tooltips, and vibe lines
+     - Styling and animations
+     - AI extinction narrative integration
+   - Prioritize **demoability, interactivity, creativity, and Web3 vibe**  
+   - Include **inline comments** explaining AI logic, fade mechanics, support logic, and dashboard updates
+
+Generate a **working, ready-to-run scaffold** implementing all of the above for a 36-hour solo hackathon. Make it **playable, visually impressive, and conceptually memorable**.
