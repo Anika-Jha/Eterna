@@ -1,12 +1,9 @@
-# Eterna - Digital Museum of Human Memory
+# Eterna : Digital Museum of Human Memory
 
 ## Overview
 
 Eterna is a living digital museum web application where human skills, traditions, recipes, and rituals are preserved as digital artifacts. Users submit cultural artifacts (recipes, skills, rituals, professions) with images and descriptions, and the system generates AI-powered extinction risk assessments and poetic narratives. Artifacts visually "fade" over time (desaturation, blur, transparency) unless community members actively support them through voting, staking, and interacting. The app includes an NFT-style gallery, artifact detail pages with comments, a preservation submission form, and a curator dashboard with analytics.
 
-## User Preferences
-
-Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
